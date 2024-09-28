@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tower_defence.ui.theme.Tower_DefenceTheme
@@ -16,10 +17,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Tower_DefenceTheme {
-                // A surface container using the 'background' color from the theme
+                // A surface container with gray background color
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFFB0BEC5)  // Custom gray color
                 ) {
                     CounterApp()  // Calling the function to display the app
                 }
@@ -57,6 +58,11 @@ fun CounterApp() {
 @Composable
 fun DefaultPreview() {
     Tower_DefenceTheme {
-        CounterApp()  // Preview of the function that renders the UI
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = Color(0xFFB0BEC5)  // Custom gray color
+        ) {
+            CounterApp()  // Preview of the function that renders the UI
+        }
     }
 }
