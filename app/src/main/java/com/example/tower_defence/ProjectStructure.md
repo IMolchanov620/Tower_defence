@@ -3,12 +3,13 @@
 - ui
     - screens
         - MainMenuScreen.kt   | Main screen with Play, Settings, and Exit buttons.
-        - GameScreen.kt       | Game interface where the player places towers.
     - dialogs
-        - PauseDialog.kt      | Pauses the game, with resume and exit options.
+        - PauseDialog.kt      | Pauses the game, with resume and exit options. override OptionDialog
+        - StatisticDialog.kt  | Dialog at the end of the lvl.
     - components
         - PlayButton.kt       | Custom button to start/resume the game.
         - TowerView.kt        | Renders a tower on the map.
+        - PauseButton.kt      | Custom button to open Pause Dialog. override OptionButton
 --------------------------------------------
 - viewmodel
     - MainMenuViewModel.kt  | Handles main menu logic and transitions.
