@@ -1,0 +1,42 @@
+# Project Structure
+
+- ui
+    - screens
+        - MainMenuScreen.kt   | Main screen with Play, Settings, and Exit buttons.
+        - GameScreen.kt       | Game interface where the player places towers.
+    - dialogs
+        - PauseDialog.kt      | Pauses the game, with resume and exit options.
+    - components
+        - PlayButton.kt       | Custom button to start/resume the game.
+        - TowerView.kt        | Renders a tower on the map.
+--------------------------------------------
+- viewmodel
+    - MainMenuViewModel.kt  | Handles main menu logic and transitions.
+    - GameViewModel.kt      | Manages game state, towers, and enemies.
+--------------------------------------------
+- model
+    - towers
+        - Tower.kt            | Represents a tower and its attributes.
+        - TowerType.kt        | Defines types of towers.
+    - enemies
+        - Enemy.kt            | Represents an enemy, its attributes and status effects.
+        - EnemyType.kt        | Defines enemy types (Ground, Flying).
+    - map
+        - GameMap.kt          | The game map where towers and enemies interact.
+        - MapGenerator.kt     | Generates the game map with paths.
+--------------------------------------------
+- repository
+    - GameRepository.kt     | Manages game data, including progress.
+    - SettingsRepository.kt | Manages sound/music settings.
+--------------------------------------------
+- utils
+    - Extensions.kt         | Common Kotlin extension functions.
+    - MathUtils.kt          | Math helper functions.
+--------------------------------------------
+- constants
+    - GameConstants.kt      | Holds constant values like enemy health, tower costs.
+--------------------------------------------
+- res
+    - drawable              | Image assets for the game.
+    - raw                   | Sound and music files.
+    - values                | String resources and UI dimensions.
