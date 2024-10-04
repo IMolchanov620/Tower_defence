@@ -7,9 +7,8 @@
         - PauseDialog.kt      | Pauses the game, with resume and exit options. override OptionDialog
         - StatisticDialog.kt  | Dialog at the end of the lvl.
     - components
-        - PlayButton.kt       | Custom button to start/resume the game.
+        - CustomButton.kt     | Custom button like start/resume and so on.
         - TowerView.kt        | Renders a tower on the map.
-        - PauseButton.kt      | Custom button to open Pause Dialog. override OptionButton
 --------------------------------------------
 - viewmodel
     - MainMenuViewModel.kt  | Handles main menu logic and transitions.
