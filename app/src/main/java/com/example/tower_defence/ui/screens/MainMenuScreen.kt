@@ -37,7 +37,7 @@ fun MainMenuScreen(viewModel: MainMenuViewModel = viewModel()) {
 
 
             if (viewModel.isSettingsDialogVisible.value) {
-                SettingsDialog(onDismiss = { viewModel.onDialogDismiss() })
+                SettingsDialog(onDismiss = { viewModel.onDialogDismiss() }, viewModel = viewModel)
             }
         }
     }

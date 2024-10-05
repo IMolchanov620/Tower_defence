@@ -2,8 +2,8 @@ package com.example.tower_defence.ui.dialogs
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
@@ -17,9 +17,10 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.tower_defence.constants.GameConstants
 import com.example.tower_defence.ui.components.CustomButtons
+import com.example.tower_defence.viewmodel.MainMenuViewModel
 
 @Composable
-fun SettingsDialog(onDismiss: () -> Unit) {
+fun SettingsDialog(onDismiss: () -> Unit, viewModel: MainMenuViewModel) {
     GameConstants.initScreenDimensions()
 
     Dialog(
@@ -27,28 +28,30 @@ fun SettingsDialog(onDismiss: () -> Unit) {
         properties = DialogProperties()
     ) {
         Surface(
-            modifier = Modifier.size((GameConstants.getButtonWidth() * 3).dp, (GameConstants.getButtonHeight() * 2).dp),
+            modifier = Modifier.size((GameConstants.getButtonWidth() * 3).dp, (GameConstants.getButtonHeight()).dp),
         ) {
             Box(
                 contentAlignment = Alignment.TopEnd
             ) {
                 CustomButtons.CloseButton(onClick = { onDismiss() })
             }
-            Column(
+            Row(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 // 3 empty buttons
-                Button(onClick = {}) {
-                    Text(text = "Option 1")
+                CustomButtons.SoundButton(
+                    onClick = { viewModel.toggleSound() }
+                )
+
+
+                Button(onClick = {}, modifier = Modifier.padding(top = 0.dp)) {
+                    Text(text = "2")
                 }
-                Button(onClick = {}, modifier = Modifier.padding(top = 8.dp)) {
-                    Text(text = "Option 2")
-                }
-                Button(onClick = {}, modifier = Modifier.padding(top = 8.dp)) {
-                    Text(text = "Option 3")
+                Button(onClick = {}, modifier = Modifier.padding(top = 0.dp)) {
+                    Text(text = "3")
                 }
             }
         }

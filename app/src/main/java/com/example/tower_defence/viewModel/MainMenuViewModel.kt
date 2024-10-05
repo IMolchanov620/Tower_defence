@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class MainMenuViewModel : ViewModel() {
     val isSettingsDialogVisible = mutableStateOf(false)
-
+    val isSoundOn= mutableStateOf(true)
 
     fun onSettingsButtonClick() {
         isSettingsDialogVisible.value = true
@@ -13,5 +13,9 @@ class MainMenuViewModel : ViewModel() {
 
     fun onDialogDismiss() {
         isSettingsDialogVisible.value = false
+    }
+
+    fun toggleSound(){
+        isSoundOn.value= !isSoundOn.value
     }
 }
