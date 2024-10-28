@@ -9,17 +9,21 @@ object GameConstants {
     private var buttonOffsetX = 0f
     private var buttonOffsetY = 0f
 
+    private var screenWidth = 0
+    private var screenHeight = 0
+
     private const val BUTTON_WIDTH_PERCENTAGE = 0.2f // 20% of screen width
     private const val BUTTON_HEIGHT_PERCENTAGE = 0.2f // 20% of screen height
     private const val BUTTON_OFFSET_X_PERCENTAGE = 0.01f // 2% of screen width for X offset
     private const val BUTTON_OFFSET_Y_PERCENTAGE = 0.01f // 2% of screen height for Y offset
 
+
+
     @Composable
     fun initScreenDimensions() {
         val configuration = LocalConfiguration.current
-        val screenWidth = configuration.screenWidthDp
-        val screenHeight = configuration.screenHeightDp
-
+        screenWidth = configuration.screenWidthDp
+        screenHeight = configuration.screenHeightDp
 
         buttonWidth = screenWidth * BUTTON_WIDTH_PERCENTAGE
         buttonHeight = screenHeight * BUTTON_HEIGHT_PERCENTAGE
@@ -31,4 +35,7 @@ object GameConstants {
     fun getButtonHeight(): Float = buttonHeight
     fun getButtonOffsetX(): Float = buttonOffsetX
     fun getButtonOffsetY(): Float = buttonOffsetY
+
+    fun getScreenWidth(): Int = screenWidth
+    fun getScreenHeight(): Int = screenHeight
 }
