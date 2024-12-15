@@ -31,25 +31,17 @@ fun DisplayMap(mapModel : MapModel = MapModel(16,8)) {
             for (row in map) {
                 Row {
                     for (terrain in row) {
-                        if (terrain == 1) {
-                            Image (
-                                painter = painterResource(R.drawable.grass2),
-                                contentDescription = null,
-                                modifier = Modifier.size(imageWidth.dp)
-                            )
-                        } else if (terrain == 0) {
-                            Image (
-                                painter = painterResource(R.drawable.road2),
-                                contentDescription = null,
-                                modifier = Modifier.size(imageWidth.dp)
-                            )
-                        } else if (terrain == 3) {
-                            Image (
-                                painter = painterResource(R.drawable.water2),
-                                contentDescription = null,
-                                modifier = Modifier.size(imageWidth.dp)
-                            )
+                        val terrainImage = when (terrain.toString()) {
+                            "grass" -> R.drawable.grass2
+                            "road" -> R.drawable.road2
+                            "water" -> R.drawable.water2
+                            else -> R.drawable.grass2
                         }
+                        Image (
+                            painter = painterResource(terrainImage),
+                            contentDescription = "",
+                            modifier = Modifier.size(imageWidth.dp)
+                        )
                     }
                 }
             }

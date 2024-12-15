@@ -4,7 +4,7 @@ import kotlin.random.Random
 
 class MapModel(val height: Int = 16, val width: Int = 8) {
 
-    var map = arrayOf(arrayOf(1,1))
+    var map : Array<Array<Terrain>>
     var directionList = ArrayList<String>()
     var posList = ArrayList<Array<Int>>()
 
@@ -14,13 +14,13 @@ class MapModel(val height: Int = 16, val width: Int = 8) {
     }
 
 
-    fun getLinearMap() : ArrayList<Int> {
+    /*fun getLinearMap() : ArrayList<Int> {
         var linearMap  = ArrayList<Int>()
         for (row in this.map) {
             linearMap += row
         }
         return linearMap
-    }
+    }*/
 
 
     fun getLinearPath() : ArrayList<Int> {
@@ -161,11 +161,32 @@ class MapModel(val height: Int = 16, val width: Int = 8) {
     }
 
 
+    fun intMapToLandMap(
+        oldMap : Array<Array<Int>>,
+        width : Int = 8, // x ratio of the board
+        height : Int = 16, // y ratio of the board
+    ): Array<Array<Terrain>> {
+        var newMap : Array<Array<Terrain>> = Array(height) { Array(width){ Terrain() } }
+
+        for (i in 0..height-1) {
+            for (j in 0..width-1) {
+                var typeOfTerrain = when (oldMap[i][j]) {
+                    0 -> Road(j, i)
+                    1 -> Grass(j, i)
+                    3 -> Water(j, i)
+                    else -> Grass(j, i)
+                }
+                newMap[i][j] = typeOfTerrain
+            }
+        }
+        return newMap
+
+    }
 
     fun generateMap(
         width : Int = 8, // x ratio of the board
         height : Int = 16, // y ratio of the board
-    ): Array<Array<Int>> {
+    ): Array<Array<Terrain>> {
         // creates a 16x8 array of grass
         var map : Array<Array<Int>> = Array(height) {Array(width){1}}
 
@@ -179,7 +200,9 @@ class MapModel(val height: Int = 16, val width: Int = 8) {
 
         map = generatePath(map = map, width = width, height = height)
 
-        return map
+        val newMap = intMapToLandMap(map)
+
+        return newMap
     }
 
     enum class Direction {
